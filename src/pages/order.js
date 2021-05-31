@@ -142,9 +142,9 @@ function PickupDetailsReview({ shippingDetails }) {
   if (shippingDetails.pickupLocation === 'Edge') {
     return (
       <PickupAddressStyles>
-        <p className='pickup-locationName'>Neighborly Coffee</p>
-        <p>36 Lincoln Rd.</p>
-        <p>Sharon, MA 02067</p>
+        <p className='pickup-locationName'>Westeros Coffee</p>
+        <p>Winterfell</p>
+        <p>Westeros</p>
       </PickupAddressStyles>
     );
   }

@@ -43,9 +43,9 @@ function Footer() {
   return (
     <FooterStyle>
       <Address>
-        <p>playground coffee</p>
-        <p>36 lincoln rd.</p>
-        <p>sharon, ma 02067</p>
+        <p>westeros coffee</p>
+        <p>winterfell</p>
+        <p>Westeros</p>
       </Address>
       <Contact>
         <a className='phone' href='tel:617-894-5656'>

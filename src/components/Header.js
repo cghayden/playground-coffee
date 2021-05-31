@@ -41,7 +41,7 @@ function Header({ black }) {
   return (
     <HeaderStyles black={black}>
       <LogoStyle>
-        <Link to='/'>neighborly coffee</Link>
+        <Link to='/'>westeros coffee</Link>
       </LogoStyle>
       <ButtonsDiv className='hideOnDesktop'>
         <button
