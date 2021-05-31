@@ -23,16 +23,16 @@ export default function contactPage() {
     <>
       <SEO title={'Contact'} />
       <main>
-        {/* <h1>neighborly coffee</h1> */}
+        {/* <h1>playground coffee</h1> */}
         <div className='contentBox'>
           <Address className='address'>
-            <p>neighborly coffee</p>
+            <p>playground coffee</p>
             <p>36 lincoln rd.</p>
             <p>sharon, ma 02067</p>
             <Contact>
               <a href='tel:617-894-5656'>617-894-5656</a>
               <a
-                href='https://www.instagram.com/neighborlycoffee'
+                href='https://www.instagram.com/playgroundcoffee'
                 rel='noopener noreferrer'
                 target='_blank'
               >

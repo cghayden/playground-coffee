@@ -43,7 +43,7 @@ function Footer() {
   return (
     <FooterStyle>
       <Address>
-        <p>neighborly coffee</p>
+        <p>playground coffee</p>
         <p>36 lincoln rd.</p>
         <p>sharon, ma 02067</p>
       </Address>
@@ -52,7 +52,7 @@ function Footer() {
           617-894-5656
         </a>
         <a
-          href='https://www.instagram.com/neighborlycoffee'
+          href='https://www.instagram.com/playgroundcoffee'
           rel='noopener noreferrer'
           target='_blank'
         >

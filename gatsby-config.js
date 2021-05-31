@@ -4,17 +4,15 @@ dotenv.config({ path: '.env' });
 
 export default {
   siteMetadata: {
-    title: 'Neighborly Coffee',
-    siteUrl: 'https://www.neighborlycoffee.com',
-    description: `Local coffee small batch roaster`,
-    // twitter: '@handleHere',
-    instagram: 'https://www.instagram.com/neighborlycoffee',
+    title: 'Playground Coffee',
+    siteUrl: '',
+    description: `Playground`,
   },
   plugins: [
     {
       resolve: 'gatsby-source-sanity',
       options: {
-        projectId: 'yi1dikna',
+        projectId: 't9guxb1x',
         dataset: 'production',
         watchMode: true,
         token: process.env.SANITY_TOKEN,

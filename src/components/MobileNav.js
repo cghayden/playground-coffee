@@ -87,7 +87,7 @@ export default function MobileNav({ showMobileNav, toggleShowMobileNav }) {
           </li>
           <li>
             <a
-              href='https://www.instagram.com/neighborlycoffee'
+              href='https://www.instagram.com/playgroundcoffee'
               rel='noopener noreferrer'
               target='_blank'
             >

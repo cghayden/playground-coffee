@@ -185,7 +185,7 @@ const GlobalStyles = styled.createGlobalStyle`
   }
 
   .contentBox {
-    background: var(--white);
+    background: pink;
     padding: 1rem;
     border-radius: 4px;
     max-width: 800px;

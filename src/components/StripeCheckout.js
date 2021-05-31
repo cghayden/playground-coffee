@@ -123,18 +123,18 @@ const CheckoutForm = ({
         },
       },
     }));
-    await fetch(`https://yi1dikna.api.sanity.io/v1/data/mutate/production`, {
+    await fetch(`https://t9guxb1x.api.sanity.io/v1/data/mutate/production`, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
-        Authorization: `Bearer ${process.env.GATSBY_SANITY_MUTATION_API}`,
+        Authorization: `Bearer ${process.env.SANITY_TOKEN}`,
       },
       body: JSON.stringify({ mutations: adjustQuantityMutations }),
     })
       // .then((response) => console.log('MUTATION RESPONSE', response.json()))
       .catch((error) => {
         console.error('ERROR ADJUSTING PRODUCT STOCK', error);
-        // send error to neighborly that stock could not be adjusted
+        // send error to playground that stock could not be adjusted
       });
   }
 
@@ -575,7 +575,7 @@ function PickupChoiceInput({ shippingDetails, setShippingDetails }) {
             for='checkout_id_pickup-daniels'
           >
             <div className='radio__label pickupAddress'>
-              <p className='pickup-locationName'>neighborly coffee</p>
+              <p className='pickup-locationName'>playground coffee</p>
               <p>36 lincoln rd.</p>
               <p>sharon, ma 02067</p>
             </div>

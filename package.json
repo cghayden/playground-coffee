@@ -1,8 +1,8 @@
 {
-  "name": "neighborly-coffee",
+  "name": "playground-coffee",
   "version": "1.0.0",
   "private": true,
-  "description": "neighborlyCoffee",
+  "description": "playgroundCoffee",
   "author": "Corey Hayden",
   "keywords": [
     "gatsby"

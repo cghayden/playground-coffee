@@ -141,7 +141,7 @@ function PickupDetailsReview({ shippingDetails }) {
   if (shippingDetails.pickupLocation === 'Edge') {
     return (
       <PickupAddressStyles>
-        <p className='pickup-locationName'>Neighborly Coffee</p>
+        <p className='pickup-locationName'>playground Coffee</p>
         <p>36 Lincoln Rd.</p>
         <p>Sharon, MA 02067</p>
       </PickupAddressStyles>

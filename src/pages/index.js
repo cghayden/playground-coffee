@@ -26,7 +26,7 @@ export default function homePage({ data }) {
   const text = data ? data.homePageText._rawContent : [];
   return (
     <>
-      <SEO title={'neighborly coffee'} />
+      <SEO title={'playground coffee'} />
       <HomeMainStyle>
         <h1 className='pageHeading'>{pageHeading}</h1>
         <HomePageTextStyles>
@@ -70,7 +70,7 @@ export const query = graphql`
 //   const { addToCart } = useCart();
 //   return (
 //     <>
-//       <SEO title={'Neighborly Coffee'} />
+//       <SEO title={'playground Coffee'} />
 //       <HomeMainStyles>
 //         <h2>Our Roasts of the Week</h2>
 //         <HomePageTextStyles>

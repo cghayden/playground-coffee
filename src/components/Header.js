@@ -39,7 +39,7 @@ function Header() {
   return (
     <HeaderStyles>
       <LogoStyle>
-        <Link to='/'>neighborly coffee</Link>
+        <Link to='/'>playground coffee</Link>
       </LogoStyle>
       <ButtonsDiv className='hideOnDesktop'>
         <button

@@ -11,10 +11,10 @@ const SanityOrders = sanityClient({
   useCdn: false, // `false` if you want to ensure fresh data
 });
 const SanityContent = sanityClient({
-  projectId: 'yi1dikna',
+  projectId: 't9guxb1x',
   dataset: 'production',
   apiVersion: '2021-05-03', // use current UTC date - see "specifying API version"!
-  token: process.env.GATSBY_SANITY_MUTATION_API, // or leave blank for unauthenticated usage
+  token: process.env.SANITY_TOKEN, // or leave blank for unauthenticated usage
   useCdn: false, // `false` if you want to ensure fresh data
 });
 
