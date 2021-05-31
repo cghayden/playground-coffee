@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import InstagramSvg from '../components/Icons/InstagramSvg';
+import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 
 const Address = styled.div`
@@ -20,19 +21,19 @@ const Contact = styled.p`
 
 export default function contactPage() {
   return (
-    <>
+    <Layout>
       <SEO title={'Contact'} />
       <main>
         {/* <h1>playground coffee</h1> */}
         <div className='contentBox'>
           <Address className='address'>
             <p>playground coffee</p>
-            <p>36 lincoln rd.</p>
-            <p>sharon, ma 02067</p>
+            <p>Winterfell</p>
+            <p>westeros</p>
             <Contact>
-              <a href='tel:617-894-5656'>617-894-5656</a>
+              <a href='tel:781-752-6486'></a>
               <a
-                href='https://www.instagram.com/playgroundcoffee'
+                href='https://www.instagram.com'
                 rel='noopener noreferrer'
                 target='_blank'
               >
@@ -44,6 +45,6 @@ export default function contactPage() {
           </Address>
         </div>
       </main>
-    </>
+    </Layout>
   );
 }

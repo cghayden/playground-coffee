@@ -4,9 +4,9 @@ import GlobalStyles from '../styles/GlobalStyles';
 import Header from './Header';
 import Footer from './Footer';
 import styled from 'styled-components';
-import darkWood11 from '../assets/images/darkWood11.jpeg';
+// import darkWood11 from '../assets/images/darkWood11.jpeg';
 // import pine1 from '../assets/images/pine1.jpg';
-// import darkWood2 from '../assets/images/darkWood2.jpg';
+import darkWood2 from '../assets/images/darkWood2.jpg';
 // import WalnutPrime from '../assets/images/WalnutPrime.jpeg';
 
 const LayoutWrapper = styled.div`
@@ -21,11 +21,12 @@ const LayoutWrapper = styled.div`
     top: 0;
     width: 100%;
     height: 100%;
+    background: #611818;
     /* opacity: 0.7; */
     /* background-image: url(${woodWhite}); */
     /* background-image: url(${pine1}); */
     /* background-image: url(${darkWood11}); */
-    background-image: url(${darkWood11});
+    /* background-image: url(${darkWood2}); */
     /* background-image: url(${WalnutPrime}); */
     /* background-attachment: fixed; */
     background-repeat: round;

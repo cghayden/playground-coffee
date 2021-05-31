@@ -4,6 +4,7 @@ import SEO from '../components/SEO';
 import styled from 'styled-components';
 import CoffeeDisplay from '../components/CoffeeDisplay';
 import PortableText from '../components/PortableText';
+import Layout from '../components/Layout';
 
 const HomeMainStyle = styled.main`
   text-align: center;
@@ -25,7 +26,7 @@ export default function homePage({ data }) {
   const pageHeading = data ? data.homePageText.heading : '';
   const text = data ? data.homePageText._rawContent : [];
   return (
-    <>
+    <Layout>
       <SEO title={'playground coffee'} />
       <HomeMainStyle>
         <h1 className='pageHeading'>{pageHeading}</h1>
@@ -34,7 +35,7 @@ export default function homePage({ data }) {
         </HomePageTextStyles>
         <CoffeeDisplay allCoffee={data.coffees.nodes} />
       </HomeMainStyle>
-    </>
+    </Layout>
   );
 }
 export const query = graphql`

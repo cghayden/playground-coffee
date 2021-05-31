@@ -5,7 +5,6 @@ dotenv.config({ path: '.env' });
 export default {
   siteMetadata: {
     title: 'Playground Coffee',
-    siteUrl: '',
     description: `Playground`,
   },
   plugins: [
@@ -14,6 +13,7 @@ export default {
       options: {
         projectId: 't9guxb1x',
         dataset: 'production',
+        apiVersion: '2021-05-25',
         watchMode: true,
         token: process.env.SANITY_TOKEN,
       },
