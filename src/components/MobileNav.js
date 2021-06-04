@@ -58,7 +58,7 @@ export default function MobileNav({ showMobileNav, toggleShowMobileNav }) {
       <MobileNavStyles>
         <ul>
           <li>
-            <Link onClick={() => toggleShowMobileNav(false)} to='/'>
+            <Link onClick={() => toggleShowMobileNav(false)} to='/coffee'>
               coffee
             </Link>
           </li>

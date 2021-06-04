@@ -40,6 +40,7 @@ const GlobalStyles = styled.createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+
   html {
     /* scrollbar-width: thin; */
     /* scrollbar-color: yellow; */
@@ -185,7 +186,7 @@ const GlobalStyles = styled.createGlobalStyle`
   }
 
   .contentBox {
-    background: pink;
+    background: var(--white);
     padding: 1rem;
     border-radius: 4px;
     max-width: 800px;

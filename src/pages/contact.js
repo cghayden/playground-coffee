@@ -1,5 +1,7 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 import styled from 'styled-components';
+import GraphQLErrorList from '../components/GraphqlErrorList';
 import InstagramSvg from '../components/Icons/InstagramSvg';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
@@ -19,15 +21,21 @@ const Contact = styled.p`
   }
 `;
 
-export default function contactPage() {
+export default function contactPage({ data, errors }) {
+  const bg = data.siteSettings.backgroundImage
+    ? `url(${data.siteSettings.backgroundImage.asset.gatsbyImageData.images.fallback.src})`
+    : data.siteSettings.backgroundColor.hex;
+  if (errors) {
+    return <GraphQLErrorList errors={errors} />;
+  }
   return (
-    <Layout>
+    <Layout bg={bg}>
       <SEO title={'Contact'} />
       <main>
         {/* <h1>playground coffee</h1> */}
         <div className='contentBox'>
           <Address className='address'>
-            <p>playground coffee</p>
+            <p>westeros coffee</p>
             <p>Winterfell</p>
             <p>westeros</p>
             <Contact>
@@ -48,3 +56,23 @@ export default function contactPage() {
     </Layout>
   );
 }
+
+export const query = graphql`
+  query ContactPageQuery {
+    # pageContent: sanityContactPage(_id: { eq: "contactPage" }) {
+    #   heading
+    #   _rawTopText(resolveReferences: { maxDepth: 10 })
+    #   _rawBottomText(resolveReferences: { maxDepth: 10 })
+    # }
+    siteSettings: sanitySiteSettings(_id: { eq: "siteSettings" }) {
+      backgroundImage {
+        asset {
+          gatsbyImageData(fit: FILL, formats: AUTO, placeholder: DOMINANT_COLOR)
+        }
+      }
+      backgroundColor {
+        hex
+      }
+    }
+  }
+`;

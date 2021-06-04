@@ -21,14 +21,10 @@ const LayoutWrapper = styled.div`
     top: 0;
     width: 100%;
     height: 100%;
-    background: #611818;
+    /* background: #611818; */
     /* opacity: 0.7; */
-    /* background-image: url(${woodWhite}); */
-    /* background-image: url(${pine1}); */
-    /* background-image: url(${darkWood11}); */
-    /* background-image: url(${darkWood2}); */
-    /* background-image: url(${WalnutPrime}); */
-    /* background-attachment: fixed; */
+    /* background: ${(props) =>
+      props.bgImg ? `url(${props.bgImg})` : props.bgColor}; */
     background-repeat: round;
     background-size: cover;
   }
@@ -39,11 +35,11 @@ const LayoutWrapper = styled.div`
     flex-direction: column;
   }
 `;
-export default function Layout({ children }) {
+export default function Layout({ children, bg }) {
   return (
     <>
       <GlobalStyles />
-      <LayoutWrapper>
+      <LayoutWrapper style={{ background: bg }}>
         <div className='content'>
           <Header />
           {children}
