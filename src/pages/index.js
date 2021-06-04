@@ -97,14 +97,20 @@ const TransitionText = styled.div`
 
 export default function welcomePage({ data }) {
   console.log('data', data);
-  const pageHeading = data ? data.homePageText.heading : '';
-  const text = data ? data.homePageText._rawContent : [];
-  const img1 = data?.content.bgImage1.asset.gatsbyImageData.images.fallback.src;
-  const img2 = data?.content.bgImage2.asset.gatsbyImageData.images.fallback.src;
-  const img3 = data?.content.bgImage3.asset.gatsbyImageData.images.fallback.src;
-  const img4 = data?.content.bgImage4.asset.gatsbyImageData.images.fallback.src;
-  const overlayText1 = data?.content.overlayText1._rawChildren;
+  const img1 =
+    data?.content.bgImage1.asset?.gatsbyImageData.images.fallback.src;
+  const coffeeBg = data.content.bgImage2.asset
+    ? `url(${data.content.bgImage2.asset.gatsbyImageData.images.fallback.src})`
+    : data.content.coffeeBackgroundColor.hex;
+  const img3 =
+    data?.content.bgImage3.asset?.gatsbyImageData.images.fallback.src;
+  // const img4 = data?.content.bgImage4.asset.gatsbyImageData.images.fallback.src;
+  const bottomBg = data.content.bgImage4.asset
+    ? `url(${data.content.bgImage4.asset.gatsbyImageData.images.fallback.src})`
+    : data.content.bottomBackgroundColor.hex;
   const overlayPortableText1 = data?.content._rawOverlayText1;
+  const coffeeHeading = data.content.coffeeSectionHeading;
+  const coffeeText = data.content._rawCoffeeText;
   const transitionText1 = data?.content._rawTransitionText1;
   const transitionText2 = data?.content._rawTransitionText2;
   const transitionText3 = data?.content._rawTransitionText3;
@@ -127,27 +133,38 @@ export default function welcomePage({ data }) {
         </HomeText>
         <CoffeeContainer
           className='bgImg'
-          style={{ minHeight: '400px', backgroundImage: `url(${img2})` }}
+          style={{
+            minHeight: '400px',
+            background: coffeeBg,
+            // background: `url(${coffeeBackgroundImg})`,
+          }}
         >
-          <h2 className='alignCenter pageHeading'>{pageHeading}</h2>
+          <h2 className='alignCenter pageHeading'>{coffeeHeading}</h2>
           <CoffeeText>
-            <PortableText blocks={text} />
+            <PortableText blocks={coffeeText} />
           </CoffeeText>
           <CoffeeDisplay allCoffee={data.coffees.nodes} />
         </CoffeeContainer>
-        <TransitionText>
-          <PortableText blocks={transitionText2} />
-        </TransitionText>
+        {transitionText2 && (
+          <TransitionText>
+            <PortableText blocks={transitionText2} />
+          </TransitionText>
+        )}
+        {img3 && (
+          <div
+            className='bgImg'
+            style={{ minHeight: '350px', backgroundImage: `url(${img3})` }}
+          ></div>
+        )}
+        {transitionText3 && (
+          <TransitionText>
+            <PortableText blocks={transitionText3} />
+          </TransitionText>
+        )}
+
         <div
-          className='bgImg'
-          style={{ minHeight: '350px', backgroundImage: `url(${img3})` }}
-        ></div>
-        <TransitionText>
-          <PortableText blocks={transitionText3} />
-        </TransitionText>
-        <div
-          className='bgImg'
-          style={{ minHeight: '100%', backgroundImage: `url(${img4})` }}
+          className='bgImg4'
+          style={{ minHeight: '100%', background: bottomBg }}
         >
           <FooterOverlay>
             <Footer />
@@ -177,11 +194,6 @@ export const query = graphql`
         }
       }
     }
-    homePageText: sanityTextBlock(name: { eq: "Home Page Lead" }) {
-      id
-      heading
-      _rawContent
-    }
     content: sanityLandingPage(name: { eq: "homePage" }) {
       bgImage1 {
         asset {
@@ -210,6 +222,14 @@ export const query = graphql`
       _rawTransitionText1(resolveReferences: { maxDepth: 10 })
       _rawTransitionText2(resolveReferences: { maxDepth: 10 })
       _rawTransitionText3(resolveReferences: { maxDepth: 10 })
+      coffeeBackgroundColor {
+        hex
+      }
+      bottomBackgroundColor {
+        hex
+      }
+      coffeeSectionHeading
+      _rawCoffeeText(resolveReferences: { maxDepth: 10 })
     }
   }
 `;

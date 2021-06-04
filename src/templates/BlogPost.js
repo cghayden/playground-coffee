@@ -30,14 +30,28 @@ export const query = graphql`
       _rawExcerpt(resolveReferences: { maxDepth: 5 })
       _rawBody(resolveReferences: { maxDepth: 5 })
     }
+    siteSettings: sanitySiteSettings(_id: { eq: "siteSettings" }) {
+      backgroundImage {
+        asset {
+          gatsbyImageData(fit: FILL, formats: AUTO, placeholder: DOMINANT_COLOR)
+        }
+      }
+      backgroundColor {
+        hex
+      }
+    }
   }
 `;
 
 const BlogPostTemplate = (props) => {
   const { data, errors } = props;
+  console.log('data', data);
   const post = data && data.post;
+  const bg = data.siteSettings.backgroundImage
+    ? `url(${data.siteSettings.backgroundImage.asset.gatsbyImageData.images.fallback.src})`
+    : data.siteSettings.backgroundColor.hex;
   return (
-    <Layout>
+    <Layout bg={bg}>
       {/* {errors && <SEO title='GraphQL Error' />} */}
       {post && (
         <SEO

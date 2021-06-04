@@ -23,10 +23,13 @@ const HomePageTextStyles = styled.div`
 // *** STATICALLY BUILT PAGE
 export default function homePage({ data }) {
   console.log('data', data);
-  const pageHeading = data ? data.homePageText.heading : '';
-  const text = data ? data.homePageText._rawContent : [];
+  const pageHeading = data ? data.pageContent.heading : '';
+  const text = data ? data.pageContent._rawTopText : [];
+  const bg = data.siteSettings.backgroundImage
+    ? `url(${data.siteSettings.backgroundImage.asset.gatsbyImageData.images.fallback.src})`
+    : data.siteSettings.backgroundColor.hex;
   return (
-    <Layout>
+    <Layout bg={bg}>
       <SEO title={'playground coffee'} />
       <HomeMainStyle>
         <h1 className='pageHeading'>{pageHeading}</h1>
@@ -57,10 +60,19 @@ export const query = graphql`
         }
       }
     }
-    homePageText: sanityTextBlock(name: { eq: "Home Page Lead" }) {
-      id
+    pageContent: sanityCoffeePage(_id: { eq: "coffeePage" }) {
       heading
-      _rawContent
+      _rawTopText(resolveReferences: { maxDepth: 10 })
+    }
+    siteSettings: sanitySiteSettings(_id: { eq: "siteSettings" }) {
+      backgroundImage {
+        asset {
+          gatsbyImageData(fit: FILL, formats: AUTO, placeholder: DOMINANT_COLOR)
+        }
+      }
+      backgroundColor {
+        hex
+      }
     }
   }
 `;

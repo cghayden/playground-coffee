@@ -40,6 +40,7 @@ const GlobalStyles = styled.createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+
   html {
     /* scrollbar-width: thin; */
     /* scrollbar-color: yellow; */
