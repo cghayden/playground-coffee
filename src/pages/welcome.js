@@ -3,10 +3,6 @@ import { graphql } from 'gatsby';
 import SEO from '../components/SEO';
 import styled from 'styled-components';
 import PortableText from '../components/PortableText';
-import garage1 from '../assets/images/garage1.jpg';
-import darkWood11 from '../assets/images/darkWood11.jpeg';
-import basicShop from '../assets/images/basicShop.jpg';
-import roasterGrill from '../assets/images/roasterGrill.png';
 import CoffeeDisplay from '../components/CoffeeDisplay';
 import GlobalStyles from '../styles/GlobalStyles';
 import Header from '../components/Header';
@@ -14,22 +10,6 @@ import Footer from '../components/Footer';
 
 const HomeWrapper = styled.div`
   height: 100vh;
-  .bgImg1 {
-    background-image: url(${garage1});
-    min-height: 100%;
-  }
-  .bgImg2 {
-    background-image: url(${darkWood11});
-    min-height: 400px;
-  }
-  .bgImg3 {
-    background-image: url(${basicShop});
-    min-height: 350px;
-  }
-  .bgImg4 {
-    background-image: url(${roasterGrill});
-    min-height: 100%;
-  }
 
   main {
     text-align: center;
@@ -43,13 +23,17 @@ const HomeWrapper = styled.div`
     width: 100%;
     text-align: center;
   }
+  .bgImg1 {
+    display: grid;
+    place-items: center;
+  }
 
+  .bgImg,
   .bgImg1,
   .bgImg2,
   .bgImg3,
   .bgImg4 {
     position: relative;
-    /* opacity: 0.65; */
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -57,23 +41,22 @@ const HomeWrapper = styled.div`
   }
 `;
 const TextOverlay = styled.div`
-  position: absolute;
-  left: 0;
-  top: 33%;
-  width: 100%;
-  /* transform: translateY(-50%); */
   text-align: center;
   color: #000;
-  span {
-    background-color: #111;
+  padding: 1rem 2rem;
+  background: hsla(0, 0%, 0%, 0.55);
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 30px;
     color: #d5e5d5;
-    padding: 18px;
-    font-size: 25px;
-    letter-spacing: 5px;
   }
   p {
     color: #d5e5d5;
-    font-size: 12px;
+    font-size: 20px;
   }
 `;
 const FooterOverlay = styled.div`
@@ -111,34 +94,41 @@ const TransitionText = styled.div`
   padding: 50px 80px;
   text-align: center;
 `;
+
 export default function welcomePage({ data }) {
   console.log('data', data);
   const pageHeading = data ? data.homePageText.heading : '';
   const text = data ? data.homePageText._rawContent : [];
-
+  const img1 = data?.content.bgImage1.asset.gatsbyImageData.images.fallback.src;
+  const img2 = data?.content.bgImage2.asset.gatsbyImageData.images.fallback.src;
+  const img3 = data?.content.bgImage3.asset.gatsbyImageData.images.fallback.src;
+  const img4 = data?.content.bgImage4.asset.gatsbyImageData.images.fallback.src;
+  const overlayText1 = data?.content.overlayText1._rawChildren;
+  const overlayPortableText1 = data?.content._rawOverlayText1;
+  const transitionText1 = data?.content._rawTransitionText1;
+  const transitionText2 = data?.content._rawTransitionText2;
+  const transitionText3 = data?.content._rawTransitionText3;
   return (
     <>
       <GlobalStyles />
       <SEO title={'Home'} />
       <HomeWrapper>
         <Header black={true} />
-        <div className='bgImg1'>
+        <div
+          className='bgImg1'
+          style={{ minHeight: '100%', backgroundImage: `url(${img1})` }}
+        >
           <TextOverlay>
-            <span>PLAYGROUND</span>
-            <p>(optional text container)</p>
+            <PortableText blocks={overlayPortableText1} />
           </TextOverlay>
         </div>
         <HomeText>
-          <h2>PLAYGROUND</h2>
-          <p>
-            Parallax scrolling is a web site where the trend background content
-            is moved at a different speed than the foreground content while
-            scrolling. Shall not put through school, graduated ugly now but not
-            free, but set free the soft ullamcorper graduated sit the kids, a
-            big ugly homework sapien sit asset.
-          </p>
+          <PortableText blocks={transitionText1} />
         </HomeText>
-        <CoffeeContainer className='bgImg2'>
+        <CoffeeContainer
+          className='bgImg'
+          style={{ minHeight: '400px', backgroundImage: `url(${img2})` }}
+        >
           <h2 className='alignCenter pageHeading'>{pageHeading}</h2>
           <CoffeeText>
             <PortableText blocks={text} />
@@ -146,13 +136,19 @@ export default function welcomePage({ data }) {
           <CoffeeDisplay allCoffee={data.coffees.nodes} />
         </CoffeeContainer>
         <TransitionText>
-          <p>Transition Text can go here</p>
+          <PortableText blocks={transitionText2} />
         </TransitionText>
-        <div className='bgImg3'></div>
+        <div
+          className='bgImg'
+          style={{ minHeight: '350px', backgroundImage: `url(${img3})` }}
+        ></div>
         <TransitionText>
-          <p>Transition Text can go here</p>
+          <PortableText blocks={transitionText3} />
         </TransitionText>
-        <div className='bgImg4'>
+        <div
+          className='bgImg'
+          style={{ minHeight: '100%', backgroundImage: `url(${img4})` }}
+        >
           <FooterOverlay>
             <Footer />
           </FooterOverlay>
@@ -186,7 +182,7 @@ export const query = graphql`
       heading
       _rawContent
     }
-    content: sanityLandingPage(name: { eq: "sample" }) {
+    content: sanityLandingPage(name: { eq: "homePage" }) {
       bgImage1 {
         asset {
           gatsbyImageData(fit: FILL, formats: AUTO, placeholder: DOMINANT_COLOR)
@@ -207,15 +203,13 @@ export const query = graphql`
           gatsbyImageData(fit: FILL, formats: AUTO, placeholder: DOMINANT_COLOR)
         }
       }
-      text1 {
+      _rawOverlayText1(resolveReferences: { maxDepth: 10 })
+      overlayText1 {
         _rawChildren
       }
-      text2 {
-        _rawChildren
-      }
-      text3 {
-        _rawChildren
-      }
+      _rawTransitionText1(resolveReferences: { maxDepth: 10 })
+      _rawTransitionText2(resolveReferences: { maxDepth: 10 })
+      _rawTransitionText3(resolveReferences: { maxDepth: 10 })
     }
   }
 `;
