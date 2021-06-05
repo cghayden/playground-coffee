@@ -38,6 +38,7 @@ const HomeWrapper = styled.div`
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    /* -webkit-background-size: contain; */
   }
 `;
 const TextOverlay = styled.div`
