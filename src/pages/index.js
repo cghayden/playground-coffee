@@ -34,7 +34,7 @@ const HomeWrapper = styled.div`
   .bgImg3,
   .bgImg4 {
     position: relative;
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
