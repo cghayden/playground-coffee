@@ -121,17 +121,21 @@ export default function welcomePage({ data }) {
       <SEO title={'Home'} />
       <HomeWrapper>
         <Header black={true} />
-        <div
-          className='bgImg1'
-          style={{ minHeight: '100%', backgroundImage: `url(${img1})` }}
-        >
-          <TextOverlay>
-            <PortableText blocks={overlayPortableText1} />
-          </TextOverlay>
-        </div>
-        <HomeText>
-          <PortableText blocks={transitionText1} />
-        </HomeText>
+        {img1 && (
+          <>
+            <div
+              className='bgImg1'
+              style={{ minHeight: '100%', backgroundImage: `url(${img1})` }}
+            >
+              <TextOverlay>
+                <PortableText blocks={overlayPortableText1} />
+              </TextOverlay>
+            </div>
+            <HomeText>
+              <PortableText blocks={transitionText1} />
+            </HomeText>
+          </>
+        )}
         <CoffeeContainer
           className='bgImg'
           style={{
@@ -141,9 +145,11 @@ export default function welcomePage({ data }) {
           }}
         >
           <h2 className='alignCenter pageHeading'>{coffeeHeading}</h2>
-          <CoffeeText>
-            <PortableText blocks={coffeeText} />
-          </CoffeeText>
+          {coffeeText && (
+            <CoffeeText>
+              <PortableText blocks={coffeeText} />
+            </CoffeeText>
+          )}
           <CoffeeDisplay allCoffee={data.coffees.nodes} />
         </CoffeeContainer>
         {transitionText2 && (
